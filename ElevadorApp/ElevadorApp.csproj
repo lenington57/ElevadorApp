@@ -45,14 +45,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Entidades\Persona.cs" />
+    <Compile Include="Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -74,6 +79,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edificio.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\elevador.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Linea vertical.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Linea horizontal.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Restart_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Play48_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh48_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pause48_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pause_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh_48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

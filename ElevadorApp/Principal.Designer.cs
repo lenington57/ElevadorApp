@@ -33,7 +33,6 @@
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.HistorialDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.ReiniciarButton = new System.Windows.Forms.Button();
             this.IniciarButton = new System.Windows.Forms.Button();
             this.label57 = new System.Windows.Forms.Label();
@@ -238,6 +237,7 @@
             // groupBox11
             // 
             this.groupBox11.Controls.Add(this.HistorialDataGridView);
+            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox11.Location = new System.Drawing.Point(6, 492);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(612, 166);
@@ -255,7 +255,6 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.button1);
             this.groupBox10.Controls.Add(this.ReiniciarButton);
             this.groupBox10.Controls.Add(this.IniciarButton);
             this.groupBox10.Location = new System.Drawing.Point(442, 420);
@@ -265,25 +264,13 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Acciones";
             // 
-            // button1
-            // 
-            this.button1.Image = global::ElevadorApp.Properties.Resources.Pause_48;
-            this.button1.Location = new System.Drawing.Point(68, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 32);
-            this.button1.TabIndex = 26;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.MyToolTip.SetToolTip(this.button1, "Pausa");
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // ReiniciarButton
             // 
             this.ReiniciarButton.BackgroundImage = global::ElevadorApp.Properties.Resources.Refresh_48;
             this.ReiniciarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ReiniciarButton.Location = new System.Drawing.Point(121, 24);
+            this.ReiniciarButton.Location = new System.Drawing.Point(91, 24);
             this.ReiniciarButton.Name = "ReiniciarButton";
-            this.ReiniciarButton.Size = new System.Drawing.Size(48, 32);
+            this.ReiniciarButton.Size = new System.Drawing.Size(78, 32);
             this.ReiniciarButton.TabIndex = 25;
             this.ReiniciarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.MyToolTip.SetToolTip(this.ReiniciarButton, "Reiniciar");
@@ -295,7 +282,7 @@
             this.IniciarButton.Image = global::ElevadorApp.Properties.Resources.Play48_48;
             this.IniciarButton.Location = new System.Drawing.Point(14, 24);
             this.IniciarButton.Name = "IniciarButton";
-            this.IniciarButton.Size = new System.Drawing.Size(48, 32);
+            this.IniciarButton.Size = new System.Drawing.Size(71, 32);
             this.IniciarButton.TabIndex = 24;
             this.IniciarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.MyToolTip.SetToolTip(this.IniciarButton, "Iniciar");
@@ -976,6 +963,7 @@
             this.LimitePersonasTextBox.Name = "LimitePersonasTextBox";
             this.LimitePersonasTextBox.Size = new System.Drawing.Size(85, 29);
             this.LimitePersonasTextBox.TabIndex = 22;
+            this.LimitePersonasTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LimitePersonasTextBox_KeyPress);
             // 
             // label6
             // 
@@ -994,6 +982,7 @@
             this.LimitePesoTextBox.Name = "LimitePesoTextBox";
             this.LimitePesoTextBox.Size = new System.Drawing.Size(85, 29);
             this.LimitePesoTextBox.TabIndex = 20;
+            this.LimitePesoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LimitePesoTextBox_KeyPress);
             // 
             // groupBox2
             // 
@@ -1959,7 +1948,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolTip MyToolTip;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox16;

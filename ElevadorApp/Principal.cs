@@ -528,7 +528,7 @@ namespace ElevadorApp
             HistorialDataGridView.DataSource = null;
             HistorialDataGridView.DataSource = lista;
             HistorialDataGridView.Columns["PersonaId"].Visible = false;
-            HistorialDataGridView.Columns[1].Width = 250;
+            HistorialDataGridView.Columns[1].Width = 230;
             CantidadPesoYPersonas();
         }
 
@@ -803,11 +803,89 @@ namespace ElevadorApp
             DiezLobbyTextBox.Text = RandomPeso().ToString();
         }
 
+        private void Limpiar()
+        {
+            IniciarButton.Enabled = true;
+            MyTimer.Enabled = false;
+            MyOtherTimer.Enabled = false;
+            LimitePesoTextBox.ReadOnly = false;
+            LimitePersonasTextBox.ReadOnly = false;
+            PrimerUnoTextBox.Clear();
+            PrimerDosTextBox.Clear();
+            PrimerTresTextBox.Clear();
+            SegundoUnoTextBox.Clear();
+            SegundoDosTextBox.Clear();
+            SegundoTresTextBox.Clear();
+            TercerUnoTextBox.Clear();
+            TercerDosTextBox.Clear();
+            TercerTresTextBox.Clear();
+            CuartoUnoTextBox.Clear();
+            CuartoDosTextBox.Clear();
+            CuartoTresTextBox.Clear();
+            QuintoUnoTextBox.Clear();
+            QuintoDosTextBox.Clear();
+            QuintoTresTextBox.Clear();
+            UnoLobbyTextBox.Clear();
+            DosLobbyTextBox.Clear();
+            TresLobbyTextBox.Clear();
+            CuatroLobbyTextBox.Clear();
+            CincoLobbyTextBox.Clear();
+            SeisLobbyTextBox.Clear();
+            SieteLobbyTextBox.Clear();
+            OchoLobbyTextBox.Clear();
+            NueveLobbyTextBox.Clear();
+            DiezLobbyTextBox.Clear();
+
+            //Piso
+            PrimerPisoUnoTextBox.Clear();
+            PrimerPisoDosTextBox.Clear();
+            PrimerPisoTresTextBox.Clear();
+            SegundoPisoUnoTextBox.Clear();
+            SegundoPisoDosTextBox.Clear();
+            SegundoPisoTresTextBox.Clear();
+            TercerPisoUnoTextBox.Clear();
+            TercerPisoDosTextBox.Clear();
+            TercerPisoTresTextBox.Clear();
+            CuartoPisoUnoTextBox.Clear();
+            CuartoPisoDosTextBox.Clear();
+            CuartoPisoTresTextBox.Clear();
+            QuintoPisoUnoTextBox.Clear();
+            QuintoPisoDosTextBox.Clear();
+            QuintoPisoTresTextBox.Clear();
+            PisoLobbyUnoTextBox.Clear();
+            PisoLobbyDosTextBox.Clear();
+            PisoLobbyTresTextBox.Clear();
+            PisoLobbyCuatroTextBox.Clear();
+            PisoLobbyCincoTextBox.Clear();
+            PisoLobbySeisTextBox.Clear();
+            PisoLobbySieteTextBox.Clear();
+            PisoLobbyOchoTextBox.Clear();
+            PisoLobbyNueveTextBox.Clear();
+            PisoLobbyDiezTextBox.Clear();
+            DesmontadosTextBox.Clear();
+            LimitePersonasTextBox.Clear();
+            LimitePesoTextBox.Clear();
+            HistorialDataGridView.DataSource = null;
+            //Variables
+            Total = 0;
+            CantidadDesmontados = 0;
+            CantidadPersonas = 0;
+            CantidadMontados = 0;
+            PisoReferencia = 0;
+            Contador = 0;
+            Cont = 5;
+            X = 684;
+            Y = 520;
+            ElevadorPictureBox.SetBounds(X, Y, Ancho, Largo);
+            PisoTextBox.Text = "0";
+        }
+
         private bool Validar()
         {
             bool estado = false;
             int PesoValidar = ToInt(LimitePesoTextBox.Text);
             int PesoProm = 772;
+            MyErrorProvider.Clear();
 
             if (String.IsNullOrWhiteSpace(LimitePesoTextBox.Text))
             {
@@ -817,6 +895,16 @@ namespace ElevadorApp
             if (String.IsNullOrWhiteSpace(LimitePersonasTextBox.Text))
             {
                 MyErrorProvider.SetError(LimitePersonasTextBox, "Debe establecer un Límite de Personas antes de iniciar");
+                estado = true;
+            }
+            if (ToInt(LimitePesoTextBox.Text) <= 0)
+            {
+                MyErrorProvider.SetError(LimitePesoTextBox, "Debe establecer un Límite de Peso real");
+                estado = true;
+            }
+            if (ToInt(LimitePersonasTextBox.Text) <= 0)
+            {
+                MyErrorProvider.SetError(LimitePersonasTextBox, "Debe establecer un Límite de Personas real");
                 estado = true;
             }
             if (PesoValidar < PesoProm)
@@ -876,6 +964,14 @@ namespace ElevadorApp
                     CantidadPesoYPersonas();
                 }
             }
+            if (ToInt(DesmontadosTextBox.Text) == 25)
+            {
+                MyTimer.Enabled = false;
+                MyOtherTimer.Enabled = false;
+                MessageBox.Show("Todos fueron desplazados", "Exito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
         }
 
         private void IniciarButton_Click(object sender, EventArgs e)
@@ -911,20 +1007,55 @@ namespace ElevadorApp
 
         private void ReiniciarButton_Click(object sender, EventArgs e)
         {
-            LimitePesoTextBox.ReadOnly = false;
-            LimitePersonasTextBox.ReadOnly = false;
-            IniciarButton.Enabled = true;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            IniciarButton.Enabled = true;
-            MyTimer.Enabled = false;
-            MyOtherTimer.Enabled = false;
+            Limpiar();
         }
 
         private void Principal_Load(object sender, EventArgs e)
         {
+        }
+
+        private void LimitePesoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo dígitos", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LimitePersonasTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo dígitos", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

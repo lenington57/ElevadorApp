@@ -27,6 +27,8 @@ namespace ElevadorApp
         private int PersonasElevador;
         private int CantidadPersonas;
         private int Total;
+        private int CantidadMontados;
+        private int CantidadDesmontados;
         private Persona lobbyUno;
         private Persona lobbyDos;
         private Persona lobbyTres;
@@ -65,6 +67,7 @@ namespace ElevadorApp
             ElevadorPictureBox.SetBounds(X, Y, Ancho, Largo);
             PisoTextBox.Text = "0";
             PisoReferencia = 0;
+            CantidadDesmontados = 0;
         }
 
         //Métodos.
@@ -74,6 +77,45 @@ namespace ElevadorApp
             Thread thread = new Thread(SubirPosicion);
             thread.Start();
             Thread.Sleep(2000);
+        }
+
+        private void ContarDesmontados()
+        {
+            List<Persona> lista = new List<Persona>();
+
+            if (HistorialDataGridView.DataSource != null)
+            {
+                lista = (List<Persona>)HistorialDataGridView.DataSource;
+            }
+
+            foreach (var item in lista)
+            {
+                if (item.Estado == "Desmontado")
+                {
+                }
+            }
+        }
+
+        private void Desmontar()
+        {
+            List<Persona> lista = new List<Persona>();
+
+            if (HistorialDataGridView.DataSource != null)
+            {
+                lista = (List<Persona>)HistorialDataGridView.DataSource;
+            }
+
+            foreach (var item in lista)
+            {
+                if (item.Estado == "Montado" && item.Piso == PisoReferencia)
+                {
+                    item.Estado = "Desmontado";
+                    CantidadPersonas -= 1;
+                    CantidadDesmontados += 1;
+                    PersonasTextBox.Text = CantidadPersonas.ToString();
+                    DesmontadosTextBox.Text = CantidadDesmontados.ToString();
+                }
+            }
         }
 
         private void CargarPersonas()
@@ -271,78 +313,78 @@ namespace ElevadorApp
                 {
                     lobbyUno.Estado = "Montado";
                     CargarGrid(lobbyUno);
-                    if (CantidadPersonas < limitePersonas && (pesso + lobbyDos.Peso) < pesoEvaluar)
+                    if (CantidadPersonas < limitePersonas && (pesso + lobbyDos.Peso) < pesoEvaluar && lobbyDos.Estado== "En espera")
                     {
                         pesso += lobbyDos.Peso;
                         lobbyDos.Estado = "Montado";
                         CargarGrid(lobbyDos);
                     }
-                    if (CantidadPersonas < limitePersonas && (pesso + lobbyTres.Peso) < pesoEvaluar)
+                    if (CantidadPersonas < limitePersonas && (pesso + lobbyTres.Peso) < pesoEvaluar && lobbyTres.Estado == "En espera")
                     {
                         pesso += lobbyTres.Peso;
                         lobbyTres.Estado = "Montado";
                         CargarGrid(lobbyTres);
                     }
-                    if (CantidadPersonas < limitePersonas && (pesso + lobbyCuatro.Peso) < pesoEvaluar)
+                    if (CantidadPersonas < limitePersonas && (pesso + lobbyCuatro.Peso) < pesoEvaluar && lobbyCuatro.Estado == "En espera")
                     {
                         pesso += lobbyCuatro.Peso;
                         lobbyCuatro.Estado = "Montado";
                         CargarGrid(lobbyCuatro);
                     }
-                    if (CantidadPersonas < limitePersonas && (pesso + lobbyCinco.Peso) < pesoEvaluar)
+                    if (CantidadPersonas < limitePersonas && (pesso + lobbyCinco.Peso) < pesoEvaluar && lobbyCinco.Estado == "En espera")
                     {
                         pesso += lobbyCinco.Peso;
                         lobbyCinco.Estado = "Montado";
                         CargarGrid(lobbyCinco);
                     }
-                    if (CantidadPersonas < limitePersonas && (pesso + lobbySeis.Peso) < pesoEvaluar)
+                    if (CantidadPersonas < limitePersonas && (pesso + lobbySeis.Peso) < pesoEvaluar && lobbySeis.Estado == "En espera")
                     {
                         pesso += lobbySeis.Peso;
                         lobbySeis.Estado = "Montado";
                         CargarGrid(lobbySeis);
                     }
-                    if (CantidadPersonas < limitePersonas && (pesso + lobbySiete.Peso) < pesoEvaluar)
+                    if (CantidadPersonas < limitePersonas && (pesso + lobbySiete.Peso) < pesoEvaluar && lobbySiete.Estado == "En espera")
                     {
                         pesso += lobbySiete.Peso;
                         lobbySiete.Estado = "Montado";
                         CargarGrid(lobbySiete);
                     }
-                    if (CantidadPersonas < limitePersonas && (pesso + lobbyOcho.Peso) < pesoEvaluar)
+                    if (CantidadPersonas < limitePersonas && (pesso + lobbyOcho.Peso) < pesoEvaluar && lobbyOcho.Estado == "En espera")
                     {
                         pesso += lobbyOcho.Peso;
                         lobbyOcho.Estado = "Montado";
                         CargarGrid(lobbyOcho);
                     }
-                    if (CantidadPersonas < limitePersonas && (pesso + lobbyNueve.Peso) < pesoEvaluar)
+                    if (CantidadPersonas < limitePersonas && (pesso + lobbyNueve.Peso) < pesoEvaluar && lobbyNueve.Estado == "En espera")
                     {
                         pesso += lobbyNueve.Peso;
                         lobbyNueve.Estado = "Montado";
                         CargarGrid(lobbyNueve);
                     }
-                    if (CantidadPersonas < limitePersonas && (pesso + lobbyDiez.Peso) < pesoEvaluar)
+                    if (CantidadPersonas < limitePersonas && (pesso + lobbyDiez.Peso) < pesoEvaluar && lobbyDiez.Estado == "En espera")
                     {
                         pesso += lobbyDiez.Peso;
                         lobbyDiez.Estado = "Montado";
-                        CargarGrid(lobbyCinco);
+                        CargarGrid(lobbyDiez);
                     }
                 }
             }
 
             if (PisoReferencia == 1)
             {
-                if ((pesso + PrimerUno.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas)
+                if ((pesso + PrimerUno.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas && PrimerUno.Estado == "En espera")
                 {
                     pesso += PrimerUno.Peso;
                     PrimerUno.Estado = "Montado";
                     CargarGrid(PrimerUno);
                 }
-                if ((pesso + PrimerDos.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas)
+                if ((pesso + PrimerDos.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas && PrimerDos.Estado == "En espera")
                 {
                     pesso += PrimerDos.Peso;
                     PrimerDos.Estado = "Montado";
                     CargarGrid(PrimerDos);
                 }
-                if ((pesso + PrimerTres.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas)
+                if ((pesso + PrimerTres.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas && PrimerTres.Estado == "En espera")
                 {
                     pesso += PrimerTres.Peso;
                     PrimerTres.Estado = "Montado";
@@ -352,19 +394,19 @@ namespace ElevadorApp
 
             if (PisoReferencia == 2)
             {
-                if ((pesso + SegundoUno.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas)
+                if ((pesso + SegundoUno.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas && SegundoUno.Estado == "En espera")
                 {
                     pesso += SegundoUno.Peso;
                     SegundoUno.Estado = "Montado";
                     CargarGrid(SegundoUno);
                 }
-                if ((pesso + SegundoDos.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas)
+                if ((pesso + SegundoDos.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas && SegundoDos.Estado == "En espera")
                 {
                     pesso += SegundoDos.Peso;
                     SegundoDos.Estado = "Montado";
                     CargarGrid(SegundoDos);
                 }
-                if ((pesso + SegndoTres.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas)
+                if ((pesso + SegndoTres.Peso) < pesoEvaluar && CantidadPersonas < limitePersonas && SegndoTres.Estado == "En espera")
                 {
                     pesso += SegndoTres.Peso;
                     SegndoTres.Estado = "Montado";
@@ -374,41 +416,41 @@ namespace ElevadorApp
 
             if (PisoReferencia == 3)
             {
-                if (CantidadPersonas < limitePersonas && (pesso + TercerUno.Peso) < pesoEvaluar)
+                if (CantidadPersonas < limitePersonas && (pesso + TercerUno.Peso) < pesoEvaluar && TercerUno.Estado == "En espera")
                 {
                     pesso += TercerUno.Peso;
                     TercerUno.Estado = "Montado";
                     CargarGrid(TercerUno);
                 }
-                if (CantidadPersonas < limitePersonas && (pesso + TercerDos.Peso) < pesoEvaluar)
+                if (CantidadPersonas < limitePersonas && (pesso + TercerDos.Peso) < pesoEvaluar && TercerDos.Estado == "En espera")
                 {
                     pesso += TercerDos.Peso;
                     TercerDos.Estado = "Montado";
                     CargarGrid(TercerDos);
                 }
-                if (CantidadPersonas < limitePersonas && (pesso + TercerTres.Peso) < pesoEvaluar)
+                if (CantidadPersonas < limitePersonas && (pesso + TercerTres.Peso) < pesoEvaluar && TercerTres.Estado == "En espera")
                 {
                     pesso += TercerTres.Peso;
                     TercerTres.Estado = "Montado";
                     CargarGrid(TercerTres);
                 }
             }
-            //De la otra forma;
+
             if (PisoReferencia == 4)
             {
-                if (CantidadPersonas < limitePersonas && (pesso + CuartoUno.Peso) < pesoEvaluar)
+                if (CantidadPersonas < limitePersonas && (pesso + CuartoUno.Peso) < pesoEvaluar && CuartoUno.Estado == "En espera")
                 {
                     pesso += CuartoUno.Peso;
                     CuartoUno.Estado = "Montado";
                     CargarGrid(CuartoUno);
                 }
-                if (CantidadPersonas < limitePersonas && (pesso + CuartoDos.Peso) < pesoEvaluar)
+                if (CantidadPersonas < limitePersonas && (pesso + CuartoDos.Peso) < pesoEvaluar && CuartoDos.Estado == "En espera")
                 {
                     pesso += CuartoDos.Peso;
                     CuartoDos.Estado = "Montado";
                     CargarGrid(CuartoDos);
                 }
-                if (CantidadPersonas < limitePersonas && (pesso + CuartoTres.Peso) < pesoEvaluar)
+                if (CantidadPersonas < limitePersonas && (pesso + CuartoTres.Peso) < pesoEvaluar && CuartoTres.Estado == "En espera")
                 {
                     pesso += CuartoTres.Peso;
                     CuartoTres.Estado = "Montado";
@@ -418,19 +460,19 @@ namespace ElevadorApp
 
             if (PisoReferencia == 5)
             {
-                if (CantidadPersonas < limitePersonas && (pesso + QuintoUno.Peso) < pesoEvaluar)
+                if (CantidadPersonas < limitePersonas && (pesso + QuintoUno.Peso) < pesoEvaluar && QuintoUno.Estado == "En espera")
                 {
                     pesso += QuintoUno.Peso;
                     QuintoUno.Estado = "Montado";
                     CargarGrid(QuintoUno);
                 }
-                if (CantidadPersonas < limitePersonas && (pesso + QuintoDos.Peso) < pesoEvaluar)
+                if (CantidadPersonas < limitePersonas && (pesso + QuintoDos.Peso) < pesoEvaluar && QuintoDos.Estado == "En espera")
                 {
                     pesso += QuintoDos.Peso;
                     QuintoDos.Estado = "Montado";
                     CargarGrid(QuintoDos);
                 }
-                if (CantidadPersonas < limitePersonas && (pesso + QuintoTres.Peso) < pesoEvaluar)
+                if (CantidadPersonas < limitePersonas && (pesso + QuintoTres.Peso) < pesoEvaluar && QuintoTres.Estado == "En espera")
                 {
                     pesso += QuintoTres.Peso;
                     QuintoTres.Estado = "Montado";
@@ -442,6 +484,7 @@ namespace ElevadorApp
         private void CantidadPesoYPersonas()
         {
             List<Persona> detalle = new List<Persona>();
+            List<Persona> lista = new List<Persona>();
 
             if (HistorialDataGridView.DataSource != null)
             {
@@ -449,11 +492,15 @@ namespace ElevadorApp
             }
 
             Total = 0;
-            CantidadPersonas = detalle.Count();
             foreach (var item in detalle)
             {
-                Total += item.Peso;
+                if (item.Estado == "Montado")
+                {
+                    Total += item.Peso;
+                    lista.Add(item);
+                }
             }
+            CantidadPersonas = lista.Count();
             PesoTextBox.Text = Total.ToString();
             PersonasTextBox.Text = CantidadPersonas.ToString();
         }
@@ -478,8 +525,8 @@ namespace ElevadorApp
             HistorialDataGridView.DataSource = null;
             HistorialDataGridView.DataSource = lista;
             HistorialDataGridView.Columns["PersonaId"].Visible = false;
+            HistorialDataGridView.Columns[1].Width = 250;
             CantidadPesoYPersonas();
-
         }
 
         private int ToInt(object valor)
@@ -813,6 +860,8 @@ namespace ElevadorApp
             if (ToInt(PisoTextBox.Text) != 0)
             {
                 CargarElevador();
+                Desmontar();
+                CantidadPesoYPersonas();
             }
         }
 
@@ -852,6 +901,13 @@ namespace ElevadorApp
             LimitePesoTextBox.ReadOnly = false;
             LimitePersonasTextBox.ReadOnly = false;
             IniciarButton.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            IniciarButton.Enabled = true;
+            MyTimer.Enabled = false;
+            MyOtherTimer.Enabled = false;
         }
     }
 }

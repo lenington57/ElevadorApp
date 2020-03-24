@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.HistorialDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.ReiniciarButton = new System.Windows.Forms.Button();
@@ -176,9 +178,11 @@
             this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.HistorialDataGridView = new System.Windows.Forms.DataGridView();
+            this.label33 = new System.Windows.Forms.Label();
+            this.DesmontadosTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.HistorialDataGridView)).BeginInit();
             this.groupBox10.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -207,8 +211,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ElevadorPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
-            this.groupBox11.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.HistorialDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -237,12 +239,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
             // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.HistorialDataGridView);
+            this.groupBox11.Location = new System.Drawing.Point(6, 492);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(612, 166);
+            this.groupBox11.TabIndex = 66;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Historial";
+            // 
+            // HistorialDataGridView
+            // 
+            this.HistorialDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HistorialDataGridView.Location = new System.Drawing.Point(9, 22);
+            this.HistorialDataGridView.Name = "HistorialDataGridView";
+            this.HistorialDataGridView.Size = new System.Drawing.Size(597, 138);
+            this.HistorialDataGridView.TabIndex = 0;
+            // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.button1);
             this.groupBox10.Controls.Add(this.ReiniciarButton);
             this.groupBox10.Controls.Add(this.IniciarButton);
-            this.groupBox10.Location = new System.Drawing.Point(438, 261);
+            this.groupBox10.Location = new System.Drawing.Point(438, 317);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(180, 72);
             this.groupBox10.TabIndex = 56;
@@ -259,6 +279,7 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.MyToolTip.SetToolTip(this.button1, "Pausa");
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ReiniciarButton
             // 
@@ -317,6 +338,8 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.label33);
+            this.groupBox7.Controls.Add(this.DesmontadosTextBox);
             this.groupBox7.Controls.Add(this.PesoTextBox);
             this.groupBox7.Controls.Add(this.label2);
             this.groupBox7.Controls.Add(this.label1);
@@ -325,7 +348,7 @@
             this.groupBox7.Controls.Add(this.label8);
             this.groupBox7.Location = new System.Drawing.Point(438, 148);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(180, 106);
+            this.groupBox7.Size = new System.Drawing.Size(180, 157);
             this.groupBox7.TabIndex = 51;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Actual";
@@ -911,7 +934,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(435, 338);
+            this.label11.Location = new System.Drawing.Point(435, 417);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(83, 15);
             this.label11.TabIndex = 26;
@@ -920,7 +943,7 @@
             // EstadoTextBox
             // 
             this.EstadoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EstadoTextBox.Location = new System.Drawing.Point(438, 357);
+            this.EstadoTextBox.Location = new System.Drawing.Point(438, 436);
             this.EstadoTextBox.Multiline = true;
             this.EstadoTextBox.Name = "EstadoTextBox";
             this.EstadoTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -1703,23 +1726,24 @@
             this.pictureBox17.TabIndex = 85;
             this.pictureBox17.TabStop = false;
             // 
-            // groupBox11
+            // label33
             // 
-            this.groupBox11.Controls.Add(this.HistorialDataGridView);
-            this.groupBox11.Location = new System.Drawing.Point(6, 492);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(612, 166);
-            this.groupBox11.TabIndex = 66;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Historial";
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(6, 134);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(95, 17);
+            this.label33.TabIndex = 57;
+            this.label33.Text = "Desmontados";
             // 
-            // HistorialDataGridView
+            // DesmontadosTextBox
             // 
-            this.HistorialDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HistorialDataGridView.Location = new System.Drawing.Point(9, 22);
-            this.HistorialDataGridView.Name = "HistorialDataGridView";
-            this.HistorialDataGridView.Size = new System.Drawing.Size(597, 138);
-            this.HistorialDataGridView.TabIndex = 0;
+            this.DesmontadosTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DesmontadosTextBox.Location = new System.Drawing.Point(110, 123);
+            this.DesmontadosTextBox.Name = "DesmontadosTextBox";
+            this.DesmontadosTextBox.ReadOnly = true;
+            this.DesmontadosTextBox.Size = new System.Drawing.Size(65, 29);
+            this.DesmontadosTextBox.TabIndex = 56;
             // 
             // Principal
             // 
@@ -1772,6 +1796,8 @@
             this.Text = "ElevadorApp";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.HistorialDataGridView)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -1808,8 +1834,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ElevadorPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
-            this.groupBox11.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.HistorialDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1966,6 +1990,8 @@
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.DataGridView HistorialDataGridView;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox DesmontadosTextBox;
     }
 }
 

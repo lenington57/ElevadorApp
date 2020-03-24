@@ -311,9 +311,12 @@ namespace ElevadorApp
                 pesso = lobbyUno.Peso;
                 if (pesso < pesoEvaluar && CantidadPersonas < limitePersonas)
                 {
-                    lobbyUno.Estado = "Montado";
-                    CargarGrid(lobbyUno);
-                    if (CantidadPersonas < limitePersonas && (pesso + lobbyDos.Peso) < pesoEvaluar && lobbyDos.Estado== "En espera")
+                    if (lobbyUno.Estado == "En espera")
+                    {
+                        lobbyUno.Estado = "Montado";
+                        CargarGrid(lobbyUno);
+                    }
+                    if (CantidadPersonas < limitePersonas && (pesso + lobbyDos.Peso) < pesoEvaluar && lobbyDos.Estado == "En espera")
                     {
                         pesso += lobbyDos.Peso;
                         lobbyDos.Estado = "Montado";
@@ -862,6 +865,16 @@ namespace ElevadorApp
                 CargarElevador();
                 Desmontar();
                 CantidadPesoYPersonas();
+
+            }
+            if (HistorialDataGridView.DataSource != null)
+            {
+                if (ToInt(PisoTextBox.Text) == 0)
+                {
+                    CargarElevador();
+                    Desmontar();
+                    CantidadPesoYPersonas();
+                }
             }
         }
 
@@ -908,6 +921,10 @@ namespace ElevadorApp
             IniciarButton.Enabled = true;
             MyTimer.Enabled = false;
             MyOtherTimer.Enabled = false;
+        }
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
         }
     }
 }

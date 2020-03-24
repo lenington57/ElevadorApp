@@ -40,6 +40,8 @@
             this.label58 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.DesmontadosTextBox = new System.Windows.Forms.TextBox();
             this.PesoTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -97,8 +99,6 @@
             this.PrimerPisoUnoTextBox = new System.Windows.Forms.TextBox();
             this.PrimerPisoTresTextBox = new System.Windows.Forms.TextBox();
             this.PrimerPisoDosTextBox = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.EstadoTextBox = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.LimitePersonasTextBox = new System.Windows.Forms.TextBox();
@@ -178,8 +178,6 @@
             this.MyToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.DesmontadosTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HistorialDataGridView)).BeginInit();
@@ -227,8 +225,6 @@
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox8);
             this.groupBox1.Controls.Add(this.groupBox9);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.EstadoTextBox);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -262,7 +258,7 @@
             this.groupBox10.Controls.Add(this.button1);
             this.groupBox10.Controls.Add(this.ReiniciarButton);
             this.groupBox10.Controls.Add(this.IniciarButton);
-            this.groupBox10.Location = new System.Drawing.Point(438, 317);
+            this.groupBox10.Location = new System.Drawing.Point(442, 420);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(180, 72);
             this.groupBox10.TabIndex = 56;
@@ -352,6 +348,25 @@
             this.groupBox7.TabIndex = 51;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Actual";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(6, 134);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(95, 17);
+            this.label33.TabIndex = 57;
+            this.label33.Text = "Desmontados";
+            // 
+            // DesmontadosTextBox
+            // 
+            this.DesmontadosTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DesmontadosTextBox.Location = new System.Drawing.Point(110, 123);
+            this.DesmontadosTextBox.Name = "DesmontadosTextBox";
+            this.DesmontadosTextBox.ReadOnly = true;
+            this.DesmontadosTextBox.Size = new System.Drawing.Size(65, 29);
+            this.DesmontadosTextBox.TabIndex = 56;
             // 
             // PesoTextBox
             // 
@@ -931,25 +946,6 @@
             this.PrimerPisoDosTextBox.Size = new System.Drawing.Size(44, 29);
             this.PrimerPisoDosTextBox.TabIndex = 25;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(435, 417);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 15);
-            this.label11.TabIndex = 26;
-            this.label11.Text = "Información";
-            // 
-            // EstadoTextBox
-            // 
-            this.EstadoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EstadoTextBox.Location = new System.Drawing.Point(438, 436);
-            this.EstadoTextBox.Multiline = true;
-            this.EstadoTextBox.Name = "EstadoTextBox";
-            this.EstadoTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.EstadoTextBox.Size = new System.Drawing.Size(178, 55);
-            this.EstadoTextBox.TabIndex = 48;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label7);
@@ -1320,12 +1316,12 @@
             // 
             // MyTimer
             // 
-            this.MyTimer.Interval = 5000;
+            this.MyTimer.Interval = 1000;
             this.MyTimer.Tick += new System.EventHandler(this.MyTimer_Tick);
             // 
             // MyOtherTimer
             // 
-            this.MyOtherTimer.Interval = 5000;
+            this.MyOtherTimer.Interval = 1000;
             this.MyOtherTimer.Tick += new System.EventHandler(this.MyOtherTimer_Tick);
             // 
             // label12
@@ -1726,25 +1722,6 @@
             this.pictureBox17.TabIndex = 85;
             this.pictureBox17.TabStop = false;
             // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(6, 134);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(95, 17);
-            this.label33.TabIndex = 57;
-            this.label33.Text = "Desmontados";
-            // 
-            // DesmontadosTextBox
-            // 
-            this.DesmontadosTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DesmontadosTextBox.Location = new System.Drawing.Point(110, 123);
-            this.DesmontadosTextBox.Name = "DesmontadosTextBox";
-            this.DesmontadosTextBox.ReadOnly = true;
-            this.DesmontadosTextBox.Size = new System.Drawing.Size(65, 29);
-            this.DesmontadosTextBox.TabIndex = 56;
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1903,8 +1880,6 @@
         private System.Windows.Forms.TextBox PisoLobbyUnoTextBox;
         private System.Windows.Forms.TextBox PisoTextBox;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox EstadoTextBox;
         private System.Windows.Forms.Timer MyOtherTimer;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
